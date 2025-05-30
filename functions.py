@@ -1,4 +1,16 @@
 epsilon = 1e-15
+def factorial(n):
+  if n == 0:
+    return 1
+  a = 1
+  for i in range(1,n + 1):
+    a = a * i
+  return a
+
+e = 0
+for i in range(100):
+  e += 1/factorial(i)
+
 pi = 0 # temp for arctan to compile
 def arctan(x):
   if x == 1:
