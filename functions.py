@@ -38,6 +38,18 @@ def arcsin(x):
 def arccos(x):
     return arctan(((1-x**2)**0.5)/x)
 
+def ln(x):
+  if abs(1-x) > 1e-5:
+    return 1e5*ln(x**1e-5)
+  res = 0
+  term = x-1
+  for n in range(1, 15):
+    res += term/n
+    term *= (-1)*(x-1)
+    if abs(term/(n+1)) < epsilon:
+      break
+  return res
+
 def sin(x):
   x %= 2*pi
   res = 0
