@@ -18,3 +18,14 @@ for i in range(15):
   e += 1/factorial(i)
 print(e) 
 
+def ln(x):
+  a = 0
+  if x > 1.1:
+    return 2 * ln(x ** (1/2))
+  for i in range(1, 15):
+    a += (-(1 - x) ** i) / (i)
+  return a
+
+
+    
+    
