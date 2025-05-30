@@ -1,6 +1,8 @@
 from constants import pi
 epsilon = 1e-15
 def arctan(x):
+  if x == 1 or x == -1:
+    return pi/2
   if x > 1:
     return -arctan(1/x)+pi/2
   if x < -1:
