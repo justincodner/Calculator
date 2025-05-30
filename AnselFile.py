@@ -46,8 +46,18 @@ def derivative(f, x):
     h = 1e-7
     return round((parse(f, (x+h)) - parse(f, x)) / h, 4)
 
-def interection(f1, f2, guess1, guess2):
-    derivative():
+def newtons_method(f, x):
+    error_small = false
+    while error_small == false:
+        a = x
+        b = x - (parse(f, x) / derivative(f, x)
+        if abs(a - b) < 10 ** -7:
+            error_small = true
+        return newtons_method(f, b)
+    return b
+    
+    
+    
 
 print(NumericIntegral("x**2", 0, 101))
 print(leftReimannSum('x**2 - 7 * x + 65', 0.001, 0, 1))
