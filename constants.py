@@ -1,4 +1,6 @@
-
+pi = 0 # temp for arctan to compile
+from arctan import arctan
+pi = 6*arctan(1/3**.5)
 def sqrt(n):
   a = n ** .5
   return a
