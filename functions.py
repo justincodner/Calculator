@@ -43,9 +43,9 @@ def ln(x):
     return 1e5*ln(x**1e-5)
   res = 0
   term = x-1
-  for n in range(1, 15):
+  for n in range(1, 100):
     res += term/n
-    term *= (-1)*(x-1)
+    term *= 1-x
     if abs(term/(n+1)) < epsilon:
       break
   return res
