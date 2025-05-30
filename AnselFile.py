@@ -47,20 +47,18 @@ def derivative(f, x):
     return round((parse(f, (x+h)) - parse(f, x)) / h, 4)
 
 def newtons_method(f, x):
-    error_small = false
-    while error_small == false:
+    error_small = False
+    while error_small == False:
         a = x
-        b = x - (parse(f, x) / derivative(f, x)
-        if abs(a - b) < 10 ** -7:
-            error_small = true
+        b = x - (parse(f, x) / derivative(f, x))
+        if abs(a - b) < 1e-4:
+            error_small = True
+            break
         return newtons_method(f, b)
     return b
-    
-    
-    
 
-print(NumericIntegral("x**2", 0, 101))
-print(leftReimannSum('x**2 - 7 * x + 65', 0.001, 0, 1))
-print(rightReimannSum('x**2 - 7 * x + 65', 0.001, 0, 1))
-print(midpointReimannSum('x**2 - 7 * x + 65', 0.001, 0, 1))
-print(trapazoidReimannSum('x**2 - 7 * x + 65', 0.001, 0, 1))
+def intersection(f1, f2, guess):
+    f = f1 + "-" + f2
+    return newtons_method(f, guess)
+
+print(intersection("2*x + 7","3*(x**2)", 1))
