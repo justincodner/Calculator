@@ -123,7 +123,7 @@ def NumericIntegral(f, start, end):
 
 def derivative(f, x):
     h = 1e-7
-    return round((parse(f, (x+h)) - parse(f, x)) / h, 4)
+    return round((parse(f, (x+h)) - parse(f, x)) / h, 8)
 
 def newtons_method(f, x):
     error_small = False
