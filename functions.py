@@ -37,7 +37,10 @@ def arcsin(x, epsilon=1e-15):
     return arctan(x/(1-x**2)**0.5, epsilon)
 
 def arccos(x, epsilon=1e-15):
-    return arctan(((1-x**2)**0.5)/x, epsilon)
+    res = arctan(((1-x**2)**0.5)/x, epsilon) # Use trig sub with theta=arccos(x)
+    if x < 0: # The above is only proved using a geometric proof, which requires positive inputs.
+      return res + pi # arccos and above func are identities with diff. ranges
+    return res
 
 def ln(x, epsilon=1e-15):
   if abs(1-x) > 1e-5:
