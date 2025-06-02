@@ -65,19 +65,11 @@ def cos(x):
 def tan(x):
     return sin(x)/cos(x)
 
-def parse(input, val):
-    input = input.replace('x', f'({val})')
-    try:
-        result = eval(input)
-        return result
-    except:
-        print("oops")
-
 def leftReimannSum(f, step, start, end):
     i = start
     total = 0
     while(i < end):
-        total += parse(f, i) * step
+        total += f(i) * step
         i += step
     return total
 
@@ -85,7 +77,7 @@ def rightReimannSum(f, step, start, end):
     i = start + step
     total = 0
     while(i <= end):
-        total += parse(f, i) * step
+        total += f(i) * step
         i += step
     return total
 
@@ -93,7 +85,7 @@ def trapazoidReimannSum(f, step, start, end):
     i = start
     total = 0
     while(i <= end):
-        total += ((parse(f, i) + parse(f, i + 1)) / 2) * step
+        total += ((f(i) + f(i + 1)) / 2) * step
         i += step
     return total
 
@@ -102,7 +94,7 @@ def midpointReimannSum(f, step, start, end):
     total = 0
     while(i < end):
         mid = i + step / 2
-        total += parse(f, mid) * step
+        total += f(mid) * step
         i += step
     return total
 
@@ -111,13 +103,13 @@ def NumericIntegral(f, start, end):
 
 def derivative(f, x):
     h = 1e-7
-    return round((parse(f, (x+h)) - parse(f, x)) / h, 4)
+    return round((f(x+h) - f(x)) / h, 4))
 
 def newtons_method(f, x):
     error_small = False
     while error_small == False:
         a = x
-        b = x - (parse(f, x) / derivative(f, x))
+        b = x - (f(x) / derivative(f, x))
         if abs(a - b) < 1e-4:
             error_small = True
             break
@@ -128,23 +120,13 @@ def intersection(f1, f2, guess):
     f = f1 + "-" + f2
     return newtons_method(f, guess)
 
-def parse2(input, val1, val2):
-    input = input.replace('x', f'({val1})')
-    input = input.replace('y',f'({val2})')
-    try:
-        result = eval(input)
-        return result
-    except:
-        print("oops")
-
-
 def eulerMethod(x1, x2, y1, step, eq):
     x = x1
     y = y1
     steps = int((x2-x1) / step)
-    slope = parse2(eq, x,y)
+    slope = eq(x,y)
     for i in range(steps):
         x+=step
         y+=step*slope
-        slope = parse2(eq, x,y)
+        slope = eq(x,y)
     return round(y, 4)
