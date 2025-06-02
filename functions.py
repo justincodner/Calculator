@@ -38,6 +38,18 @@ def arcsin(x):
 def arccos(x):
     return arctan(((1-x**2)**0.5)/x)
 
+def ln(x):
+  if abs(1-x) > 1e-5:
+    return 1e5*ln(x**1e-5)
+  res = 0
+  term = x-1
+  for n in range(1, 100):
+    res += term/n
+    term *= 1-x
+    if abs(term/(n+1)) < epsilon:
+      break
+  return res
+
 def sin(x):
   x %= 2*pi
   res = 0
@@ -130,3 +142,14 @@ def eulerMethod(x1, x2, y1, step, eq):
         y+=step*slope
         slope = eq(x,y)
     return round(y, 4)
+
+def roots_on_interval(f, a, b):
+  lower_bound = min(a, b)
+  deltax = abs(a - b) / 1000
+  roots = []
+  for i in range(1001):
+    current_term = lower_bound + deltax * i
+    next_term = current_term + deltax
+    if (f(current_term) > 0 and f(next_term) < 0) or (f(current_term) < 0 and f(next_term)) > 0:
+      roots.append(newtons_method(current_term))
+  return roots
