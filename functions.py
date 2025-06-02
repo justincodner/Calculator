@@ -160,3 +160,14 @@ def eulerMethod(x1, x2, y1, step, eq):
         y+=step*slope
         slope = parse2(eq, x,y)
     return round(y, 4)
+
+def roots_on_interval(f, a, b):
+  lower_bound = min(a, b)
+  deltax = abs(a - b) / 1000
+  roots = []
+  for i in range(1001):
+    current_term = lower_bound + deltax * i
+    next_term = current_term + deltax 
+    if (parse(f, current_term) > 0 and parse(f, next_term) < 0) or (parse(f, current_term) < 0 and parse(f, next_term)) > 0:
+      roots.append(newtons_method(current_term))
+  return roots
