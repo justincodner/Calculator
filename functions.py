@@ -117,19 +117,18 @@ def midpointReimannSum(f, step, start, end):
         i += step
     return total
 
-def NumericIntegral(f, start, end):
-    return midpointReimannSum(f, ((end - start) / 100.0), start, end)
+def NumericIntegral(f, start, end, nSteps = 1e6):
+    return midpointReimannSum(f, ((end - start) / nSteps), start, end)
 
-def derivative(f, x):
-    h = 1e-7
+def derivative(f, x, h=1e-7):
     return round((f(x+h) - f(x)) / h, 4)
 
-def newtons_method(f, x):
+def newtons_method(f, x, epsilon = 1e-4):
     error_small = False
     while error_small == False:
         a = x
         b = x - (f(x) / derivative(f, x))
-        if abs(a - b) < 1e-4:
+        if abs(a - b) < epsilon:
             error_small = True
             break
         return newtons_method(f, b)
@@ -158,5 +157,5 @@ def roots_on_interval(f, a, b):
     current_term = lower_bound + deltax * i
     next_term = current_term + deltax
     if (f(current_term) > 0 and f(next_term) < 0) or (f(current_term) < 0 and f(next_term)) > 0:
-      roots.append(newtons_method(current_term))
+      roots.append(newtons_method(f(current_term)))
   return roots
