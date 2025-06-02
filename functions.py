@@ -1,4 +1,3 @@
-epsilon = 1e-15
 def factorial(n):
   if n == 0:
     return 1
@@ -12,7 +11,7 @@ for i in range(100):
   e += 1/factorial(i)
 
 pi = 0 # temp for arctan to compile
-def arctan(x):
+def arctan(x, epsilon=1e-15):
   if x == 1:
     return pi/4
   if x == -1:
@@ -23,59 +22,67 @@ def arctan(x):
     return -arctan(1/x)-pi/2
   res = 0
   term = x
-  for n in range(1, 100):
+  n = 1
+  while True:
     res += term/(2*n-1)
     term *= (-1)*(x**2)
     if abs(term/(2*n+1)) < epsilon:
       break
+    n+=1
   return res
 
-pi = 6*arctan(1/3**.5)
+pi = 6*arctan(1/3**.5, 1e-30)
 
-def arcsin(x):
-    return arctan(x/(1-x**2)**0.5)
+def arcsin(x, epsilon=1e-15):
+    return arctan(x/(1-x**2)**0.5, epsilon)
 
-def arccos(x):
-    return arctan(((1-x**2)**0.5)/x)
+def arccos(x, epsilon=1e-15):
+    return arctan(((1-x**2)**0.5)/x, epsilon)
 
-def ln(x):
+def ln(x, epsilon=1e-15):
   if abs(1-x) > 1e-5:
     return 1e5*ln(x**1e-5)
   res = 0
   term = x-1
-  for n in range(1, 100):
+  n = 1
+  while True:
     res += term/n
     term *= 1-x
     if abs(term/(n+1)) < epsilon:
       break
+    n+=1
   return res
 
-def sin(x):
+def sin(x, epsilon=1e-15):
   x %= 2*pi
   res = 0
   term = x
-  for n in range(1, 100):
+  n = 1
+  while True:
     res += term
     term *= (-1)*(x**2)
     term /= (2*n)*(2*n+1)
     if abs(term) < epsilon:
       break
+    n += 1
   return res
 
-def cos(x):
+def cos(x, epsilon=1e-15):
   x %= 2*pi
   res = 0
   term = 1
-  for n in range(1, 100):
+  n = 1
+  while True:
     res += term
     term *= (-1)*(x**2)
     term /= (2*n-1)*(2*n)
     if abs(term) < epsilon:
       break
+    n += 1
   return res
 
-def tan(x):
-    return sin(x)/cos(x)
+def tan(x, epsilon=1e-15):
+    return sin(x, epsilon)/cos(x, epsilon)
 
 def leftReimannSum(f, step, start, end):
     i = start
@@ -115,7 +122,7 @@ def NumericIntegral(f, start, end):
 
 def derivative(f, x):
     h = 1e-7
-    return round((f(x+h) - f(x)) / h, 4))
+    return round((f(x+h) - f(x)) / h, 4)
 
 def newtons_method(f, x):
     error_small = False
