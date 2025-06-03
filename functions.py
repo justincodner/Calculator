@@ -162,3 +162,8 @@ def roots_on_interval(f, a, b):
     if (f(current_term) > 0 and f(next_term) < 0) or (f(current_term) < 0 and f(next_term)) > 0:
       roots.append(newtons_method(f, current_term))
   return roots
+
+def inverse_on_interval(f, y, a, b):
+  def find_roots(x):
+    return f(x) - y
+  return roots_on_interval(find_roots, a, b)
