@@ -57,7 +57,7 @@ def ln(x, epsilon=1e-15):
   return res
 
 def sin(x, epsilon=1e-15):
-  # x %= 2*pi
+  x %= 2*pi # this will accumulate error really quick for any input > 10^12 (our pi is accurate up to 11~12 digits)
   res = 0
   term = x
   n = 1
@@ -71,7 +71,7 @@ def sin(x, epsilon=1e-15):
   return res
 
 def cos(x, epsilon=1e-15):
-  # x %= 2*pi
+  x %= 2*pi # this will accumulate error really quick for any input > 10^12 (our pi is accurate up to 11~12 digits)
   res = 0
   term = 1
   n = 1
