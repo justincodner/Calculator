@@ -160,5 +160,5 @@ def roots_on_interval(f, a, b):
     current_term = lower_bound + deltax * i
     next_term = current_term + deltax
     if (f(current_term) > 0 and f(next_term) < 0) or (f(current_term) < 0 and f(next_term)) > 0:
-      roots.append(newtons_method(f(current_term)))
+      roots.append(newtons_method(f, current_term))
   return roots
