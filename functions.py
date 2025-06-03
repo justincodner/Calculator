@@ -163,6 +163,9 @@ def roots_on_interval(f, a, b):
       roots.append(newtons_method(f, current_term))
   return roots
 
+def points(f, xList):
+  return [(x, f(x)) for x in xList]
+
 def inverse_on_interval(f, y, a, b):
   def find_roots(x):
     return f(x) - y
