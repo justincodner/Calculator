@@ -139,7 +139,8 @@ def newtons_method(f, x, epsilon = 1e-4):
     return b
 
 def intersection(f1, f2, guess):
-    f = f1 + "-" + f2
+    def f(x):
+      return f1(x) - f2(x)
     return newtons_method(f, guess)
 
 def eulerMethod(x1, x2, y1, step, eq):
