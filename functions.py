@@ -172,3 +172,14 @@ def inverse_on_interval(f, y, a, b):
   def find_roots(x):
     return f(x) - y
   return roots_on_interval(find_roots, a, b)
+
+def roots_backup(f, a, b):
+  lower_bound = min(a, b)
+  deltax = abs(a - b) / 100000
+  roots = []
+  for i in range(100001):
+    current_term = lower_bound + deltax * i
+    next_term = current_term + deltax
+    if (f(current_term) > 0 and f(next_term) < 0) or (f(current_term) < 0 and f(next_term)) > 0:
+      roots.append(current_term)
+  return roots
