@@ -128,6 +128,7 @@ def derivative(f, x, h=1e-7):
 
 def newtons_method(f, x, epsilon = 1e-4):
     error_small = False
+    # breaks when guess makes derivative zero
     while error_small == False:
         a = x
         b = x - (f(x) / derivative(f, x))
