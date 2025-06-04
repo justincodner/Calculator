@@ -6,6 +6,9 @@ def factorial(n):
     a = a * i
   return a
 
+def sqrt(x):
+  return x**(1/2)
+
 e = 0
 for i in range(100):
   e += 1/factorial(i)
