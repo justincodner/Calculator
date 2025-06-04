@@ -131,7 +131,7 @@ def NumericIntegral(f, start, end, nSteps = 1e6):
     return midpointReimannSum(f, ((end - start) / nSteps), start, end)
 
 def derivative(f, x, h=1e-7):
-    return round((f(x+h) - f(x)) / h, 4)
+    return (f(x+h) - f(x)) / h
 
 def newtons_method(f, x, epsilon = 1e-4):
     error_small = False
