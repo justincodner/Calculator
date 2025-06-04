@@ -94,9 +94,9 @@ def leftReimannSum(f, step, start, end):
     i = start
     total = 0
     while(i < end):
-        total += f(i) * step
+        total += f(i) 
         i += step
-    return total
+    return total * step
 
 def rightReimannSum(f, step, start, end):
     i = start + step
@@ -109,8 +109,8 @@ def rightReimannSum(f, step, start, end):
 def trapazoidReimannSum(f, step, start, end):
     i = start
     total = 0
-    while(i <= end):
-        total += ((f(i) + f(i + 1)) / 2) * step
+    while(i < end):
+        total += ((f(i) + f(i + step)) / 2) * step
         i += step
     return total
 
