@@ -44,7 +44,7 @@ def arccos(x, epsilon=1e-15):
 
 def ln(x, epsilon=1e-15):
   if abs(1-x) > 1e-5:
-    return 1e5*ln(x**1e-5)
+    return 1e3*ln(x**1e-3)
   res = 0
   term = x-1
   n = 1
