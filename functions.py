@@ -124,6 +124,10 @@ def midpointReimannSum(f, step, start, end):
     return total
 
 def NumericIntegral(f, start, end, nSteps = 1e6):
+    if start == end:
+      return 0
+    if start > end:
+      return -NumericIntegral(f, end, start, nSteps) # flip bounds
     return midpointReimannSum(f, ((end - start) / nSteps), start, end)
 
 def derivative(f, x, h=1e-7):
