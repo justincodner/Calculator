@@ -163,9 +163,10 @@ def eulerMethod(x1, x2, y1, step, eq):
 
 def roots_on_interval(f, a, b):
   lower_bound = min(a, b)
-  deltax = abs(a - b) / 1000
+  deltax = abs(a - b) / 1001
+  #dif of integral bounds over this number must be a repeating decimal
   roots = []
-  for i in range(1001):
+  for i in range(1002):
     current_term = lower_bound + deltax * i
     next_term = current_term + deltax
     if (f(current_term) > 0 and f(next_term) < 0) or (f(current_term) < 0 and f(next_term)) > 0:
