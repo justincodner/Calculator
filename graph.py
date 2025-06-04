@@ -31,7 +31,7 @@ def graph(f,xmin,xmax,ymin,ymax):
             y2 = f(x2)
             canvas.create_line(scaleX(x1), scaleY(y1), scaleX(x2), scaleY(y2), fill = 'blue')
         except:
-            pass #have to check div by 0 errors
+            pass #have to check div by 0 errors or other errors
     window.mainloop()
 
 def func(x):
