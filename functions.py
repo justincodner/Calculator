@@ -159,7 +159,7 @@ def eulerMethod(x1, x2, y1, step, eq):
         x+=step
         y+=step*slope
         slope = eq(x,y)
-    return round(y, 4)
+    return y
 
 def roots_on_interval(f, a, b):
   lower_bound = min(a, b)
