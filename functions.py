@@ -153,7 +153,11 @@ def intersection(f1, f2, guess):
 def eulerMethod(x1, x2, y1, step, eq):
     x = x1
     y = y1
-    steps = int((x2-x1) / step)
+    if(x2 < x1):
+        steps = int((x1-x2) / step)
+        step*=-1
+    else:
+        steps = int((x2-x1) / step)
     slope = eq(x,y)
     for i in range(steps):
         x+=step
