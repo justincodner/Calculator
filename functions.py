@@ -59,6 +59,9 @@ def ln(x, epsilon=1e-15):
     n+=1
   return res
 
+def logBase(base, thing):
+    return ln(thing)/ln(base)
+
 def sin(x, epsilon=1e-15):
   x %= 2*pi # this will accumulate error really quick for any input > 10^12 (our pi is accurate up to 11~12 digits)
   res = 0
