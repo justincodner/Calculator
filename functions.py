@@ -187,9 +187,9 @@ def inverse_on_interval(f, y, a, b):
 
 def roots_backup(f, a, b):
   lower_bound = min(a, b)
-  deltax = abs(a - b) / 100000
+  deltax = abs(a - b) / 100001
   roots = []
-  for i in range(100001):
+  for i in range(100002):
     current_term = lower_bound + deltax * i
     next_term = current_term + deltax
     if (f(current_term) > 0 and f(next_term) < 0) or (f(current_term) < 0 and f(next_term)) > 0:
