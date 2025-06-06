@@ -32,6 +32,18 @@ def graph(f,xmin,xmax,ymin,ymax):
             canvas.create_line(scaleX(x1), scaleY(y1), scaleX(x2), scaleY(y2), fill = 'blue')
         except:
             pass #have to check div by 0 errors or other errors
+
+     a = int(xmax)-int(xmin)
+    xstep= int(xmin)
+    for i in range(a):
+        canvas.create_line(scaleX(xstep), scaleY(0)+5, scaleX(xstep), scaleY(0)-5, fill = 'black')
+        xstep+=1
+        
+    a = int(ymax)-int(ymin)
+    ystep = int(ymin)
+    for i in range(a):
+        canvas.create_line(scaleX(0)+5, scaleY(ystep), scaleX(0)-5, scaleY(ystep), fill = 'black')
+        ystep+=1
     window.mainloop()
 def graphMulti(fList, xmin, xmax, ymin, ymax):
     window = tk.Tk()
@@ -66,4 +78,16 @@ def graphMulti(fList, xmin, xmax, ymin, ymax):
                 canvas.create_line(scaleX(x1), scaleY(y1), scaleX(x2), scaleY(y2), fill = 'blue')
             except:
                 pass #have to check div by 0 errors or other errors
+
+     a = int(xmax)-int(xmin)
+    xstep= int(xmin)
+    for i in range(a):
+        canvas.create_line(scaleX(xstep), scaleY(0)+5, scaleX(xstep), scaleY(0)-5, fill = 'black')
+        xstep+=1
+        
+    a = int(ymax)-int(ymin)
+    ystep = int(ymin)
+    for i in range(a):
+        canvas.create_line(scaleX(0)+5, scaleY(ystep), scaleX(0)-5, scaleY(ystep), fill = 'black')
+        ystep+=1
     window.mainloop() 

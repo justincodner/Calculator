@@ -133,10 +133,10 @@ def NumericIntegral(f, start, end, nSteps = 1e6):
       return -NumericIntegral(f, end, start, nSteps) # flip bounds
     return midpointReimannSum(f, ((end - start) / nSteps), start, end)
 
-def derivative(f, x, h=1e-7):
-    return (f(x+h) - f(x)) / h
+def derivative(f, x, h=1e-5):
+    return (f(x+h) - f(x-h)) / (2*h)
 
-def newtons_method(f, x, epsilon = 1e-4):
+def newtons_method(f, x, epsilon = 1e-6):
     error_small = False
     # breaks when guess makes derivative zero
     while error_small == False:
