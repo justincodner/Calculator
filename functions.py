@@ -133,7 +133,7 @@ def NumericIntegral(f, start, end, nSteps = 1e6):
 def derivative(f, x, h=1e-7):
     return (f(x+h) - f(x)) / h
 
-def newtons_method(f, x, epsilon = 1e-4):
+def newtons_method(f, x, epsilon = 1e-6):
     error_small = False
     # breaks when guess makes derivative zero
     while error_small == False:
